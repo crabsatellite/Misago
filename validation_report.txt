@@ -1,0 +1,44 @@
+================================================================
+ Dockerfile PR Validation Report: misago-test
+ Generated: Sat Mar  7 12:06:42     2026
+================================================================
+
+
+--- Step 1: Build Original ---
+[PASS] Original Dockerfile builds successfully
+
+--- Step 2: Build Fixed ---
+[PASS] Fixed Dockerfile builds successfully
+
+--- Step 3: Image Size ---
+  Original: 508 MB
+  Fixed:    449 MB
+  Saved:    58 MB
+[PASS] Fixed image is same size or smaller
+
+--- Step 4: System Packages (dpkg) ---
+[PASS] No system packages lost in fixed image
+
+--- Step 5: Python Packages (pip) ---
+[PASS] Python packages identical
+
+--- Step 6: CMD / ENTRYPOINT ---
+  Original: CMD=[/bin/sh -c python manage.py runserver 0.0.0.0:8000 --noreload] ENTRYPOINT=[]
+  Fixed:    CMD=[python manage.py runserver 0.0.0.0:8000 --noreload] ENTRYPOINT=[]
+[PASS] CMD/ENTRYPOINT recorded (review above for equivalence)
+
+--- Step 7: WORKDIR / ENV / EXPOSE ---
+[PASS] WorkingDir identical: /app/
+[PASS] ExposedPorts identical: map[8000/tcp:{}]
+[PASS] Application ENV vars identical
+
+--- Step 8: Layer Count ---
+  Original: 14 layers
+  Fixed:    14 layers
+[PASS] Layer count recorded
+
+================================================================
+  Results: 10/10 passed, 0 failed
+  VERDICT: PASS — Safe to submit PR.
+================================================================
+  Cleanup: images and temp files removed
